@@ -48,17 +48,38 @@ public class Main {
  
  
     // STEP 5: Create overloaded methods to display info
-    // public static void displayInfo() { ... }
-    // public static void displayInfo(String name) { ... }
-    // public static void displayInfo(String name, int age) { ... }
+    public static void displayInfo() {  
+
+        System.out.println("Display Info: No information provided");
+    }
+
+
+    public static void displayInfo(String name) { 
+
+        System.out.println("Display Info: Name: " + name);
+    }
+
+
+     public static void displayInfo(String name, int age) {  
+
+        System.out.println("Display info: Name: " + name + ", Age: " + age);
+     }
  
  
     // STEP 6: Method that uses enum (simulate game choice)
-    // public static void showChoice(Choice choice) { ... }
+     public static void showChoice(String player,Choice choice) { 
+        System.out.println(player + " chooses " + choice);
+      }
  
  
     // STEP 7: Create a method that calls other methods (for method call stack demo)
-    // public static int sumAndMultiply(int a, int b) { ... }
+     public static int sumAndMultiply(int a, int b) {
+        int sum = addNumbers(a, b);
+        int product = multiplyNumbers(a,b);
+        return sum + product;
+
+
+      }
 
      public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
