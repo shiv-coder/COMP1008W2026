@@ -26,21 +26,32 @@ class ArrayUtilities {
     // Method to calculate sum of array elements
     public static int sumArray(int[] numbers) {
         // TODO: use loop to calculate sum
-        return 0;
+        int sum =0;
+        for(int num : numbers){
+            sum += num;
+        }
+        return sum;
     }
  
  
     // Method to find average
     public static double averageArray(int[] numbers) {
         // TODO: call sumArray and compute average
-        return 0.0;
+        int sum = sumArray(numbers);
+        return (double) sum / numbers.length;
     }
  
  
-    // Variable-length argument method
+    // Variable-length argument method(Varargs method)
     public static int maxValue(int... values) {
         // TODO: find maximum value
-        return 0;
+        int max = values[0];
+        for( int val : values){
+            if( val > max){
+                max = val;
+            }
+        }
+        return max;
     }
 }
  
@@ -57,18 +68,36 @@ class GradeBook {
     // Constructor
     public GradeBook(int[][] gradesArray) {
         // TODO: assign grades
+        this.grades = gradesArray;
     }
  
  
     // Display grades
     public void displayGrades() {
         // TODO: nested loop to print 2D array
+        System.out.println("\nStudent Grades: ");
+        for(int i =0;i<grades.length;i++){
+            System.out.print("Student:" + (i + 1) +":");
+            for(int j=0;j<grades[i].length;j++){
+                System.out.print(grades[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
  
  
     // Calculate average for each student
     public void calculateAverages() {
         // TODO: loop through rows and compute averages
+        System.out.println("\nStudent Averages");
+        for(int i =0;i<grades.length;i++){
+                int sum = 0;
+                for(int num : grades[i]){
+                sum += num;
+        }
+         double avg = (double) sum/grades[i].length;
+        System.out.println("Student" + (i+1) + "Average: " + avg);
+        }
     }
 }
  
