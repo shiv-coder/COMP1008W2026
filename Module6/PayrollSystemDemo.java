@@ -178,20 +178,32 @@ class BasePlusCommissionEmployee extends CommissionEmployee {
                                       double sales, double rate, double salary) {
         super(first, last, ssn, sales, rate);
         // TODO: validate and set baseSalary
+        this.baseSalary = (salary > 0.0) ? salary :0.0;
     }
  
- 
+    public double getBaseSalary(){
+        return baseSalary;
+    }
+
+    
     @Override
     public double earnings() {
         // TODO: return baseSalary + super.earnings()
-        return 0.0;
+        return getBaseSalary() + super.earnings();
+    }
+    
+    public void setBaseSalary(double salary){
+        if(salary > 0.0){
+            this.baseSalary = salary;
+        }
     }
  
  
     @Override
     public String toString() {
         // TODO: include "Base salary" info plus super.toString()
-        return "";
+        return "Base Plus Comission Employee: " + super.toString() +
+                "\nGBase Salary: " + baseSalary;
     }
 }
  
@@ -206,13 +218,17 @@ class Invoice implements Payable {
  
     public Invoice(String part, String desc, int qty, double price) {
         // TODO: initialize fields
+        this.partNumber = part;
+        this.partDescription = desc;
+        this.quantity = (qty > 0) ? qty :0;
+        this.pricePerItem = (price > 0.0) ? price : 0.0;
     }
  
  
     @Override
     public double getPaymentAmount() {
         // TODO: return quantity * pricePerItem
-        return 0.0;
+        return quantity * pricePerItem;
     }
  
  
@@ -236,15 +252,30 @@ public class PayrollSystemDemo {
  
  
         // TODO: Add Employee subclasses and Invoice objects to the list
- 
+        payableList.add(new SalariedEmployee("Josh", "Doe", "111-11-1111", 1000.0));
+        payableList.add(new HourlyEmployee("Jane", "Smith", "222-22-2222", 20.0, 45));
+        payableList.add(new CommissionEmployee("Jim", "Brown", "333-33-3333", 5000.0, 0.05));
+        payableList.add(new BasePlusCommissionEmployee("Jill", "White", "444-44-4444", 4000.0, 0.04, 300.0));
+        
+        payableList.add(new Invoice("123", ":Laptop", 2, 800.0));
+        payableList.add(new Invoice("456", "Mouse", 5, 20.0));
+
+        System.out.println("PAYROLL SYSTEM OUTPUT:\n");
  
         // TODO: Loop through list and polymorphically call getPaymentAmount()
         for (Payable payable : payableList) {
             System.out.println(payable.toString());
             System.out.println("Payment: " + payable.getPaymentAmount());
-        }
+        
  
  
         // TODO: Demonstrate compile-time polymorphism with calculateBonus()
+        if(payable instanceof Employee){
+            Employee emp = (Employee) payable;
+            System.out.printf("Bonus for Employee: $%.2f%n",emp.calculateBonus(1000.0));
+             System.out.printf("Bonus for Employee: $%.2f%n",emp.calculateBonus(1000.0, 3));
+        }
+        System.out.println("----------------------------------------");
+        }
     }
-}
+    }
