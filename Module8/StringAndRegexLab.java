@@ -94,40 +94,46 @@ public class StringAndRegexLab {
  
         // STEP 11: Replace digits in a string
         // Example: "Java123"
+        String replaceExample = "Java123";
         // Replace all digits with "*"
- 
- 
- 
+        String replaced = replaceExample.replaceAll("\\d","*");
+        System.out.println("Result: " + replaced);
  
  
  
         // STEP 12: Extract all numbers from string
         // Example: "Order number is 4567"
+        String text = "Order number is 4567";
+        Pattern pattern = Pattern.compile("\\d+");
         // Use Pattern and Matcher
+        Matcher matcher = pattern.matcher(text);
         // Print matched number
  
+        while(matcher.find()){
+            System.out.println("FoundNumber: " + matcher.group());
+        }
  
- 
- 
- 
+  
  
         // STEP 13: Check if string contains only letters
         // Example: "JavaOnly"
-        // Print true/false
- 
- 
- 
+        String lettersonly = "JavaOnly";
+         // Print true/false
+        System.out.println("Only Letters?" + lettersonly.matches("[A-Za-z]+"));
  
  
  
         // STEP 14: Split sentence using regex
         // Sentence: "Java   is   powerful"
+        String sentence = "Java   is   powerful";
         // Split by multiple spaces
+        String[] words = sentence.split("\\s+");
         // Print each word
+        for(String word: words){
+            System.out.println("WOrd: " + word);
+        }
  
- 
- 
- 
+
  
  
     }
