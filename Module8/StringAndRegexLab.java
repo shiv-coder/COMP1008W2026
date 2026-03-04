@@ -16,46 +16,28 @@ public class StringAndRegexLab {
  
         // STEP 1: Create a String called message
         // Assign value: "Java Programming Language"
- 
- 
- 
- 
+
+        String message = "Java Programming language";
  
  
         // STEP 2: Print length of message
- 
- 
- 
- 
- 
- 
+        System.out.println("Length: " + message.length());
+  
         // STEP 3: Print character at index 5
- 
- 
- 
- 
- 
- 
+        System.out.println("Character at 5: " + message.charAt(5));
+  
         // STEP 4: Extract substring "Programming"
- 
- 
- 
- 
- 
+        String sub = message.substring(5, 16);
+        System.out.println("Substring: " + sub);
  
         // STEP 5: Compare two strings using equals()
  
- 
- 
- 
- 
- 
+        String another =  "Java Programming language";
+        System.err.println("Are Equal? " + message.equals(another));
+  
         // STEP 6: Convert message to uppercase
- 
- 
- 
- 
- 
+        System.out.println("Uppercase: " + message.toUpperCase());
+  
  
         // STEP 7: Use StringBuilder
         // Create StringBuilder with "Hello"
@@ -64,29 +46,31 @@ public class StringAndRegexLab {
         // Reverse it
         // Print result
  
- 
- 
- 
- 
- 
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append("Java");
+        sb.insert(0,"Awesome");
+        sb.reverse();
+        System.out.println("String Builder result: " + sb);
+
         // STEP 8: Use Character class
         // Create char variable
         // Check isDigit, isLetter, isUpperCase
- 
- 
- 
- 
+        char ch ='A';
+        System.out.println("Is Digit? " + Character.isDigit(ch));
+        System.out.println("Is Letter? " + Character.isLetter(ch));
+        System.out.println("Is UpperCase? " + Character.isUpperCase(ch));
  
  
         // STEP 9: Tokenize this string:
         // "Apple,Banana,Mango"
         // Split by comma and print each fruit
+        String fruits = "Apple,Banana,Mango";
+        String[] tokens = fruits.split(",");
+        for(String fruit : tokens){
+            System.out.println("Fruit: " + fruit);
+        }
  
- 
- 
- 
- 
- 
+  
         // =====================================================
         // ================= PART 2 ============================
         // Regular Expressions (Pattern & Matcher)
@@ -95,10 +79,15 @@ public class StringAndRegexLab {
  
         // STEP 10: Validate Email using regex
         // Create a String email = "student@email.com"
+        String email = "student@gmail.com";
         // Write regex to validate simple email format
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9+_.-]+$";
         // Print if valid or not
- 
- 
+        if(email.matches(emailRegex)){
+            System.out.println("Valid Email");
+        } else{
+            System.out.println("Invalid Email");
+        }
  
  
  
