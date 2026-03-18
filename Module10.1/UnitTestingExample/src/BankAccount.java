@@ -1,106 +1,43 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+public class BankAccount {
+ 
+    private String accountHolder;
+    private double balance; 
  
  
-// Test suite for all classes
-public class BigTestSuite {
+    public BankAccount(String accountHolder, double balance){
+        this.accountHolder = accountHolder;
+        this.balance = balance;        
  
- 
-    // Calculator tests
-    Calculator calc = new Calculator();
- 
- 
-    @Test
-    public void testAdd() {
-        
     }
- 
- 
-    @Test
-    public void testSubtract() {
-        
+
+    public String getAccountHolder() {
+        return accountHolder;
     }
+
  
- 
-    @Test
-    public void testMultiply() {
-        
-    }
- 
- 
-    @Test
-    public void testDivide() {
-        
-    }
- 
- 
-    // Exception test (division by zero)
-   
- 
- 
- 
-    // StringUtility tests
-    StringUtility strUtil = new StringUtility();
- 
- 
-    @Test
-    public void testReverse() {
-        
-    }
- 
- 
-    @Test
-    public void testPalindromeTrue() {
-        
-    }
- 
- 
-    @Test
-    public void testPalindromeFalse() {
-        
-    }
- 
- 
- 
- 
-    // BankAccount tests
-    @Test
-    public void testDeposit() {
- 
- 
-        BankAccount acc = new BankAccount("John",500);
-        acc.deposit(200);
- 
- 
+    public double getBalance(){
+        return balance;
        
     }
  
  
-    @Test
-    public void testWithdraw() {
+    public void deposit(double amount){
+
+        if(amount < 0){
+            throw new IllegalArgumentException("Depost cannot be negative");
+        }
  
- 
-        BankAccount acc = new BankAccount("John",500);
-        acc.withdraw(200);
- 
- 
-       
+            balance += amount;
     }
  
  
- 
- 
-    // Exception test: withdraw more than balance
-    
- 
-    }
- 
- 
- 
- 
-    // Exception test: negative deposit
-   
- 
- 
+    public void withdraw(double amount){
+
+        if(amount > balance){
+            throw new IllegalArgumentException("Insufficient Balance");
+        }
+
+        balance -= amount;
+        
     }
 }
