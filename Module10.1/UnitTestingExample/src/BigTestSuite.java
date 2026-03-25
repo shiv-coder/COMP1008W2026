@@ -32,7 +32,7 @@ public class BigTestSuite {
  
     @Test
     public void testDivide() {
-        assertEquals(1,calc.divide(4,2));
+        assertEquals(2,calc.divide(4,2));
     }
  
  
@@ -89,10 +89,11 @@ public class BigTestSuite {
     @Test
     public void testWithdraw() {
  
- 
+ //delta: how much the difference yo allow between expected and actual
         BankAccount acc = new BankAccount("John",500);
         acc.withdraw(200);
          assertEquals(300,acc.getBalance(),0.001); 
+         assertEquals()
        
     }
  

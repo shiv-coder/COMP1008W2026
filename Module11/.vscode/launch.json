@@ -1,0 +1,13 @@
+{
+    "vmArgs": "--module-path \"C:/javafx-sdk-21/lib\" --add-modules javafx.controls",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "JavaFXLearningActivity",
+            "request": "launch",
+            "mainClass": "JavaFXLearningActivity",
+            "projectName": "Module11_f3742719"
+        }
+    ]
+}
