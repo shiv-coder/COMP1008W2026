@@ -120,10 +120,37 @@ public class LearningActivity3 extends Application {
  
  
         // TODO: add all labels and controls to the grid
-        // Example:
-        // grid.add(new Label("Name:"), 0, 0);
-        // grid.add(nameField, 1, 0);
+        //(node,column,row)
+        grid.add(new Label("Name: "),0,0);
+        grid.add(nameField,1,0);
+
+        grid.add(new Label("Password: "),0,1);
+        grid.add(passwordField,1,1);
+
+
+        grid.add(new Label("Course: "),0,2);
+        grid.add(courseBox,1,2);
+
+        grid.add(new Label("Gender: "),0,3);
+        grid.add(genderBox,1,3);
+
+        grid.add(new Label("Hobbies: "),0,4);
+        grid.add(hobbyBox,1,4);
+
+        grid.add(new Label("DOB: "),0,5);
+        grid.add(dobPicker,1,5);
+
+        grid.add(new Label("Rating: "),0,6);
+        grid.add(ratingSlider,1,6);
  
+        grid.add(new Label("Age: "),0,7);
+        grid.add(ageSpinner,1,7);
+
+        grid.add(new Label("Favorite Color: "),0,8);
+        grid.add(colorPicker,1,8);
+
+        grid.add(new Label("Progress: "),0,9);
+        grid.add(progressBar,1,9);
  
         // ===== MAIN LAYOUT =====
         VBox root = new VBox(15);
@@ -132,8 +159,8 @@ public class LearningActivity3 extends Application {
         root.getChildren().addAll(menuBar, title, grid, submitBtn, output);
  
  
-        Scene scene = new Scene(root, 450, 600);
-        stage.setTitle("Module 12 – Student Shell");
+        Scene scene = new Scene(root, 450, 600);//(VBox,width,height)
+        stage.setTitle("Module 12- Student Form");
         stage.setScene(scene);
         stage.show();
     }
