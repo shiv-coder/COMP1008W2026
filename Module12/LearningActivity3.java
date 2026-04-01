@@ -1,4 +1,5 @@
-import java.lang.classfile.Label;
+
+
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -98,6 +99,12 @@ public class LearningActivity3 extends Application {
            if(reading.isSelected()) hobbies += "Reading";
            if(sports.isSelected()) hobbies += "Sports";
            if(music.isSelected()) hobbies += "Music";
+           //Validation
+
+           if(name.isEmpty()){
+            showError("Name cannot be empty");
+            return;
+           }
             
            output.setText("Name: " + name + 
                           "\nCourse: " + course +
@@ -108,6 +115,7 @@ public class LearningActivity3 extends Application {
             alert.setContentText("Form Submitted");
             alert.show();
 
+           
             progressBar.setProgress(1.0);
         });
  
@@ -116,7 +124,7 @@ public class LearningActivity3 extends Application {
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
-        grid.setPadding(new Insets(10));
+        //grid.setPadding(new Insets(10));
  
  
         // TODO: add all labels and controls to the grid
@@ -165,7 +173,15 @@ public class LearningActivity3 extends Application {
         stage.show();
     }
  
- 
+    private void showError(String message){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("message");
+                alert.showAndWait();
+
+
+            }
+
     public static void main(String[] args) {
         launch();
     }
