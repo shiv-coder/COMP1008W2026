@@ -1,3 +1,5 @@
+import java.lang.classfile.Label;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,7 +18,7 @@ public class LearningActivity3 extends Application {
  
         // ===== MENU =====
         MenuBar menuBar = new MenuBar();
-        Menu fileMenu = new Menu("File");
+        Menu fileMenu = new Menu("Form");
         MenuItem exitItem = new MenuItem("Exit");
         exitItem.setOnAction(e -> stage.close());
         fileMenu.getItems().add(exitItem);
@@ -35,6 +37,8 @@ public class LearningActivity3 extends Application {
         // ===== COMBOBOX =====
         ComboBox<String> courseBox = new ComboBox<>();
         // TODO: add course options
+        courseBox.getItems().addAll("Java","Python","JS");
+        courseBox.setValue("Java");
  
  
         // ===== RADIO BUTTON =====
@@ -42,6 +46,9 @@ public class LearningActivity3 extends Application {
         RadioButton female = new RadioButton("Female");
         ToggleGroup genderGroup = new ToggleGroup();
       //To-Do
+        male.setToggleGroup(genderGroup);
+        female.setToggleGroup(genderGroup);
+        HBox genderBox = new HBox(10,male,female);
  
  
         // ===== CHECKBOX =====
@@ -81,6 +88,27 @@ public class LearningActivity3 extends Application {
         submitBtn.setOnAction(e -> {
             // TODO: handle button click
             // Example: read values from fields and display in output
+            String name = nameField.getText();
+            String course = courseBox.getValue();
+            String gender = (male.isSelected()) ? "Male":
+                            (female.isSelected()) ? "Female": "";
+
+
+           String hobbies ="";
+           if(reading.isSelected()) hobbies += "Reading";
+           if(sports.isSelected()) hobbies += "Sports";
+           if(music.isSelected()) hobbies += "Music";
+            
+           output.setText("Name: " + name + 
+                          "\nCourse: " + course +
+                          "\nGender: " + gender +
+                          "\nHobbies: " + hobbies);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Form Submitted");
+            alert.show();
+
+            progressBar.setProgress(1.0);
         });
  
  
